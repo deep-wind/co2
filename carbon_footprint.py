@@ -26,40 +26,28 @@ page_title="Carbon Footprint Calculator",
 page_icon="🌎"
 )
 
-def get_base64_of_bin_file(bin_file):
-    """
-    function to read png file 
-    ----------
-    bin_file: png -> the background image in local folder
-    """
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
 
-def set_png_as_page_bg(png_file):
-    """
-    function to display png as bg
-    ----------
-    png_file: png -> the background image in local folder
-    """
-    bin_str = get_base64_of_bin_file(png_file)
-    page_bg_img = '''
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
     <style>
-    body {
-    background-image: url("data:image/png;base64,%s");
-    background-size: cover;
-    }
+    .stApp {{
+        background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+        background-size: cover
+    }}
     </style>
-    ''' % bin_str
-    
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-    return
+    """,
+    unsafe_allow_html=True
+    )
+
 
 try:
     st.sidebar.markdown("<h1 style='text-align: center; color: black;'>🧭 Navigation Bar🧭</h1>", unsafe_allow_html=True)
     nav = st.sidebar.radio("",["Home 🏡","Individual Emissions 👨‍👩‍👧‍👦","Group Emissions 🌐","Donate 💰"])
     if nav == "Home 🏡":
-      set_png_as_page_bg("back.jpg")
+      add_bg_from_local("back.jpg")
       st.markdown("<h1 style ='color:#BB1D3F; text_align:center;font-family:times new roman;font-weight: bold;font-size:35pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
       st.markdown("<h1 style='color:black;text_align:center;font-family:times new roman;font-size:20pt;font-weight: bold;'> A CARBON FOOTPRINT CALCULATOR</h1>", unsafe_allow_html=True)
       st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
