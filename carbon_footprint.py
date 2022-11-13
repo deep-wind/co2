@@ -15,6 +15,11 @@ import pandas as pd
 from PIL import Image
 import streamlit as st
 from web3 import Web3
+import netCDF4 as nc
+import math
+from streamlit_folium import folium_static
+from streamlit_folium import st_folium
+import folium
 
 st.set_page_config(
 page_title="Carbon Footprint Calculator",
@@ -60,10 +65,52 @@ try:
       st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
    
     if nav == "Group Emissions 🌐":
-      set_png_as_page_bg("back.jpg")
-      st.markdown("<h1 style ='color:#BB1D3F; text_align:center;font-family:times new roman;font-weight: bold;font-size:35pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
-      st.markdown("<h1 style='color:black;text_align:center;font-family:times new roman;font-size:20pt;font-weight: bold;'> A CARBON FOOTPRINT CALCULATOR</h1>", unsafe_allow_html=True)
-      st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)
+        fn = "oco2_LtCO2_220228_B10206Ar_220425053928s.nc4"
+        ds = nc.Dataset(fn)
+        #print(ds)
+        print(ds['xco2'])
+        print(ds['xco2'][:])
+
+        df=pd.DataFrame(columns=["Latitude","Longitude","xco2"])
+
+        df["Longitude"] = ds['longitude'][:]
+        df["Latitude"] = ds['latitude'][:]
+        df["xco2"]=ds['xco2'][:]
+
+        #Repalce inplace 
+        df.fillna(0,inplace=True)
+
+
+        m = folium.Map(location=None, width='100%', height='100%', left='0%', top='0%', position='relative', tiles='OpenStreetMap', attr=None, min_zoom=0, max_zoom=18, zoom_start=10, min_lat=- 90, max_lat=90, min_lon=- 180, max_lon=180, max_bounds=True, crs='EPSG3857', control_scale=False, prefer_canvas=False, no_touch=False, disable_3d=False, png_enabled=False, zoom_control=True)
+        m.add_child(folium.LatLngPopup())
+        map = st_folium(m)
+        try:
+
+            user_lat=map['last_clicked']['lat']
+            user_lon=map['last_clicked']['lng'] 
+
+        except:
+            st.warning("No location choosen")
+
+        if st.button("Predict"):
+            user_lat=float(user_lat)
+            user_lon=float(user_lon)
+
+            #df_first=df[(60>df['Latitude']> 59)]
+            df_first=df.loc[(df['Latitude'] >user_lat) &(df['Latitude'] < user_lat+20) & (df['Longitude']> user_lon)&(df['Longitude']< user_lon+20 ),'xco2']
+            res=df_first.mean()
+
+            if(math.isnan(res)):
+                st.error("Unable to find co2 concentration at the specified location")
+            else:
+                st.write("""<style>[data-testid="stMetricDelta"] svg {display: none;}</style>""",unsafe_allow_html=True)   
+                if(res<415):
+                    st.metric(label="Amount of CO2 (in ppm)", value=round(res,3), delta="parts per millions")
+                else:
+                    st.metric(label="Amount of CO2 (in ppm)", value=round(res,3), delta="parts per millions",delta_color="inverse")
+
+
      
     
     if nav == "Donate 💰":
