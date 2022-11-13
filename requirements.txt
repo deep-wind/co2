@@ -3,6 +3,6 @@ matplotlib
 numpy 
 PyPDF2
 pandas
-streamlit==0.73.1
+streamlit
 web3
 
