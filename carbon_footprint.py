@@ -52,7 +52,7 @@ def set_png_as_page_bg(png_file):
 
 try:
     st.sidebar.markdown("<h1 style='text-align: center; color: black;'>🧭 Navigation Bar🧭</h1>", unsafe_allow_html=True)
-    nav = st.sidebar.radio("",["Home 🏡","Prediction📟","Donate 💰"])
+    nav = st.sidebar.radio("",["Home 🏡","Individual Prediction👨‍👩‍👧‍👦","Donate 💰"])
     if nav == "Home 🏡":
       set_png_as_page_bg("back.jpg")
       st.markdown("<h1 style ='color:#BB1D3F; text_align:center;font-family:times new roman;font-weight: bold;font-size:35pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
@@ -461,7 +461,7 @@ We need your support to keep it going. </h1>""",unsafe_allow_html=True)
     ##                            MAIN SCRIPT                                   ##
     ##############################################################################
     #answer_1= answer_2= answer_3= answer_4= answer_5= answer_6= answer_7= answer_8= answer_9= answer_10= answer_11=""
-    if nav == "Prediction📟":
+    if nav == "Individual Prediction 👨‍👩‍👧‍👦":
         st.markdown(f"""<h1 style='text-align: center; font-weight:bold;color:white;background-color:green;font-size:20pt;'>Let's find your carbon footprint! 😉 </h1>""",unsafe_allow_html=True)
         st.write("")
         st.image("https://i.pinimg.com/originals/7e/69/ec/7e69eca344ca1465da94d698ded08e8e.gif", width=300)
