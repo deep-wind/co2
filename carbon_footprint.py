@@ -52,7 +52,7 @@ def set_png_as_page_bg(png_file):
 
 try:
     st.sidebar.markdown("<h1 style='text-align: center; color: black;'>🧭 Navigation Bar🧭</h1>", unsafe_allow_html=True)
-    nav = st.sidebar.radio("",["Home 🏡","Individual Prediction👨‍👩‍👧‍👦","Donate 💰"])
+    nav = st.sidebar.radio("",["Home 🏡","Individual Prediction 👨‍👩‍👧‍👦","Donate 💰"])
     if nav == "Home 🏡":
       set_png_as_page_bg("back.jpg")
       st.markdown("<h1 style ='color:#BB1D3F; text_align:center;font-family:times new roman;font-weight: bold;font-size:35pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
