@@ -1,0 +1,8 @@
+pip
+reportlab
+matplotlib
+numpy 
+PyPDF2
+pandas
+streamlit==0.73.1
+web3
