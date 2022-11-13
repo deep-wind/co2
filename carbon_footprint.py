@@ -48,12 +48,12 @@ try:
     nav = st.sidebar.radio("",["Home 🏡","Individual Emissions 👨‍👩‍👧‍👦","Group Emissions 🌐","Donate 💰"])
     if nav == "Home 🏡":
       add_bg_from_local("back.jpg")
-      st.markdown("<h1 style ='color:#BB1D3F;text-align: center;font-family:times new roman;font-weight: bold;font-size:20pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
+      st.markdown("<h1 style ='color:#BB1D3F;text-align: center;font-family:times new roman;font-weight: bold;font-size:32pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
       st.markdown("<h1 style='color:black;text-align: center;font-family:times new roman;font-size:20pt;font-weight: bold;'>A CARBON FOOTPRINT CALCULATOR</h1>", unsafe_allow_html=True)
-      st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:20pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
+      st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
    
     if nav == "Group Emissions 🌐":
-        st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)
+        st.markdown(f"""<h1 style='text-align: center; font-weight:bold;color:black;background-color:powderblue;font-size:20pt;'>Know the co2 level at your area⚠️</h1>""",unsafe_allow_html=True)
         fn = "oco2_LtCO2_220228_B10206Ar_220425053928s.nc4"
         ds = nc.Dataset(fn)
         #print(ds)
