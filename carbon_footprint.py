@@ -48,9 +48,9 @@ try:
     nav = st.sidebar.radio("",["Home 🏡","Individual Emissions 👨‍👩‍👧‍👦","Group Emissions 🌐","Donate 💰"])
     if nav == "Home 🏡":
       add_bg_from_local("back.jpg")
-      st.markdown("<h1 style ='color:#BB1D3F;text_align:center;font-family:times new roman;font-weight: bold;font-size:20pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
-      st.markdown("<h1 style='color:black;text_align:center;font-family:times new roman;font-size:20pt;font-weight: bold;'>A CARBON FOOTPRINT CALCULATOR</h1>", unsafe_allow_html=True)
-      st.markdown("<h1 style='color:green;text-align:center;font-family:times new roman;font-size:20pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
+      st.markdown("<h1 style ='color:#BB1D3F;text-align: center;font-family:times new roman;font-weight: bold;font-size:20pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
+      st.markdown("<h1 style='color:black;text-align: center;font-family:times new roman;font-size:20pt;font-weight: bold;'>A CARBON FOOTPRINT CALCULATOR</h1>", unsafe_allow_html=True)
+      st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:20pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)        
    
     if nav == "Group Emissions 🌐":
         st.markdown("<h1 style='color:green;text-align: center;font-family:times new roman;font-size:25pt;font-weight: bold;'>Reduce your carbon footprint!</h1>", unsafe_allow_html=True)
