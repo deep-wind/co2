@@ -54,6 +54,7 @@ try:
    
     if nav == "Group Emissions 🌐":
         st.markdown(f"""<h1 style='text-align: center; font-weight:bold;color:black;background-color:powderblue;font-size:20pt;'>Know the co2 level at your area⚠️</h1>""",unsafe_allow_html=True)
+        st.write(".")
         fn = "oco2_LtCO2_220228_B10206Ar_220425053928s.nc4"
         ds = nc.Dataset(fn)
         #print(ds)
