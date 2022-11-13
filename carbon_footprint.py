@@ -102,7 +102,7 @@ try:
      
     
     if nav == "Donate 💰":
-        set_png_as_page_bg("earth.jpg")
+        add_bg_from_local("earth.jpg")
         st.markdown(f"""<h1 style='text-align: center; font-weight:bold;color:black;background-color:powderblue;font-size:20pt;'>Make a Donation </h1>""",unsafe_allow_html=True)
         st.markdown(f"""<h1 style='text-align: center; font-weight:bold;color:red;font-size:12pt;'>We believe the Footprint Calculator serves a crucial purpose in the world: to help people explore what it means to live on our one planet.
 We need your support to keep it going. </h1>""",unsafe_allow_html=True)
