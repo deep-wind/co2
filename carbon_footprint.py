@@ -44,7 +44,7 @@ def add_bg_from_local(image_file):
 
 try:
     st.sidebar.markdown("<h1 style='text-align: center; color: black;'>🧭 Navigation Bar🧭</h1>", unsafe_allow_html=True)
-    nav = st.sidebar.radio("",["Home 🏡","Individual Emissions 👨‍👩‍👧‍👦","Group Emissions 🌐","Donate 💰"])
+    nav = st.sidebar.radio("",["Home 🏡","Individual Emissions 👨‍👩‍👧‍👦","Group Emissions 🌐"])
     if nav == "Home 🏡":
       add_bg_from_local("back.jpg")
       st.markdown("<h1 style ='color:#BB1D3F;text-align: center;font-family:times new roman;font-weight: bold;font-size:32pt;'>DEEP CARE 🌍❤️️ </h1>", unsafe_allow_html=True)  
