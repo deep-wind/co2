@@ -6,6 +6,5 @@ textblob
 PyPDF2
 pandas
 streamlit
-web3
 netCDF4
 streamlit_folium
